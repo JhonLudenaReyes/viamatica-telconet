@@ -9,6 +9,10 @@ import com.webservice.telconet.model.entity.Person;
 
 public interface PersonDaoRepository extends JpaRepository<Person, Integer>{
 	
+	//Búsqueda todas las personas activas
 	Optional<List<Person>> findAllByState(String state);
+	
+	//Búsqueda persona por id activas
+	Optional<Person> findByPersonIdAndState(Integer personId, String state);
 
 }

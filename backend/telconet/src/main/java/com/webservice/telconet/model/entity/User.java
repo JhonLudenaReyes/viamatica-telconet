@@ -27,14 +27,17 @@ public class User {
 	@Column(name = "person_id")
 	private Integer personId;
 	
-	@Column(name = "user_name", length = 45)
+	@Column(name = "user_name", length = 20, unique = true)
 	private String userName;
 	
-	@Column(length = 45)
+	@Column(length = 15)
 	private String password;
 	
-	@Column(length = 45)
+	@Column(length = 20, unique = true)
 	private String email;
+	
+	//Número de intentos
+	private Integer attempts = 0;
 	
 	@Column(columnDefinition = "varchar(1) not null default 'A'")
 	private String state = "A";

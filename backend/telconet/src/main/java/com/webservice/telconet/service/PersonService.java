@@ -22,4 +22,16 @@ public class PersonService implements PersonRepository{
 		return personDaoRepository.findAllByState("A");
 	}
 
+	@Override
+	public Optional<Person> getPersonByPersonId(Integer personId) {
+		// TODO Auto-generated method stub
+		return personDaoRepository.findByPersonIdAndState(personId, "A");
+	}
+
+	@Override
+	public Person save(Person person) {
+		// TODO Auto-generated method stub
+		return personDaoRepository.save(person);
+	}
+
 }

@@ -11,5 +11,9 @@ import com.webservice.telconet.model.entity.Person;
 public interface PersonRepository {
 	
 	Optional<List<Person>> getPeopleActives();
+	
+	Optional<Person> getPersonByPersonId(Integer personId);
+	
+	Person save(Person person);
 
 }
