@@ -1,0 +1,29 @@
+<p-menubar [model]="items">
+  <ng-template pTemplate="start">
+    <img
+      src="https://soportetecnicoyadt.files.wordpress.com/2016/03/servicio_tecnico.png?w=775"
+      height="40"
+      class="mr-2"
+      [routerLink]="['']"
+    />
+    <b [routerLink]="['']">Viamatica telconet</b>
+  </ng-template>
+  <span *ngIf="habilitar">
+    <b>Bienvenido usuario: </b>{{ userLogin.userName }} <b>Perfil: </b
+    >{{ userLogin.roleName }}
+  </span>
+  <button
+    pButton
+    label="Cerrar sesión"
+    icon="pi pi-power-off"
+    (click)="cerrarSesion()"
+    *ngIf="habilitar"
+  ></button>
+  <button
+    pButton
+    label="Iniciar sesión"
+    icon="pi pi-power-off"
+    (click)="iniciarSesion()"
+    *ngIf="!habilitar"
+  ></button>
+</p-menubar>

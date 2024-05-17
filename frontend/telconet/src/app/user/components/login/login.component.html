@@ -1,0 +1,50 @@
+<p-toast></p-toast>
+<p-card class="UserLoginCard">
+  <h2 class="TituloLogin"><b>Inicio de sesión</b></h2>
+  <hr />
+  <form [formGroup]="userForm">
+    <div class="grid p-fluid">
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input
+            type="text"
+            formControlName="user"
+            name="user"
+            pInputText
+            placeholder="Usuario"
+          />
+        </div>
+        <p *ngIf="user.invalid && user.touched" style="color: brown">
+          {{ getErrorMessageUser("user") }}
+        </p>
+      </div>
+      <br />
+      <div class="col-12 md:col-4">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-key"></i></span>
+          <input
+            type="password"
+            formControlName="password"
+            name="password"
+            pInputText
+            placeholder="Contraseña"
+          />
+        </div>
+        <p *ngIf="password.invalid && password.touched" style="color: brown">
+          {{ getErrorMessagePassword("password") }}
+        </p>
+        <!--<p style="color: brown" *ngIf="password.touched && password.invalid">
+          Debe ingresar una contraseña
+        </p>-->
+      </div>
+      <hr />
+      <p-button
+        label="Iniciar Sesión"
+        styleClass="p-button-raised"
+        (click)="iniciarSesion()"
+        [disabled]="userForm.invalid"
+      ></p-button>
+    </div>
+  </form>
+</p-card>
