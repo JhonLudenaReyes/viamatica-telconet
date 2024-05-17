@@ -30,19 +30,19 @@ public class UserController {
 	private PersonService personService;
 
 	@GetMapping("/session-login")
-	public ResponseEntity<User> sessionLogin(@RequestBody User user) {
-
-		if (user.getUserName().isEmpty()) {
-
-			return userService.sessionLogin(user.getUserName(), user.getPassword())
-					.map(userLogin -> new ResponseEntity<>(userLogin, HttpStatus.OK))
-					.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-		} else {
-			return userService.sessionLogin(user.getEmail(), user.getPassword())
-					.map(userLogin -> new ResponseEntity<>(userLogin, HttpStatus.OK))
-					.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-
+	public ResponseEntity<Object> sessionLogin(@RequestParam("userName") String userName, @RequestParam("password") String password) {
+		
+		Optional<User> userLogin = userService.sessionLogin(userName, password);
+		
+		if(userLogin.isPresent()) {
+			return new ResponseEntity<>(userLogin.get(), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);	
 		}
+		
+		
+
+		
 
 	}
 
