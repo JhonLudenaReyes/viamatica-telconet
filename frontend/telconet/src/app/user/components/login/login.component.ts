@@ -141,8 +141,6 @@ export class LoginComponent {
             JSON.stringify({ panelState: true })
           );
 
-          this.getLoginPermissions(this.userLogin.roleId);
-
           this.router.navigate(['dashboard/administrator']);
 
           this.navigationService._navigationRefresh = true;
@@ -161,13 +159,6 @@ export class LoginComponent {
       severity: 'error',
       summary: 'Inicio de sesión fallido',
       detail: 'Su usuario o contraseña son incorrectos',
-    });
-  }
-
-  // EXTRAE LOS PERMISOS QUE VA A MOSTRAR EL PANEL Y LAS INTERFACES
-  getLoginPermissions(roleId: number) {
-    this.userService.getLoginPermissions(roleId).subscribe((response) => {
-      localStorage.setItem('permissionsLogin', JSON.stringify(response));
     });
   }
 }

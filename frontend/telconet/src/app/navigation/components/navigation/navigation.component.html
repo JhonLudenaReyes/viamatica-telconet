@@ -9,8 +9,8 @@
     <b [routerLink]="['']">Viamatica telconet</b>
   </ng-template>
   <span *ngIf="habilitar">
-    <b>Bienvenido usuario: </b>{{ userLogin.userName }} <b>Perfil: </b
-    >{{ userLogin.roleName }}
+    <b>Bienvenido usuario: </b>{{ userLogin.userName }} <b>Perfil: </b>
+    <h5 *ngFor="let role of userLogin.roles">{{ role.role | uppercase }}</h5>
   </span>
   <button
     pButton

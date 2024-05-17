@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from './navigation/services/navigation.service';
-import { Profile } from './user/interfaces/profile.interface';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,6 @@ export class AppComponent implements OnInit {
 
   navigationRefresh: boolean = false;
 
-  permissionsLogin!: Profile[];
-
   constructor(private navigationService: NavigationService) {}
   ngOnInit(): void {}
 
@@ -21,9 +18,5 @@ export class AppComponent implements OnInit {
     if (this.navigationRefresh != this.navigationService._navigationRefresh) {
       this.navigationRefresh = this.navigationService._navigationRefresh;
     }
-
-    this.permissionsLogin = JSON.parse(
-      localStorage.getItem('permissionsLogin') || '[]'
-    );
   }
 }

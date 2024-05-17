@@ -35,15 +35,19 @@ export class NavigationComponent implements OnInit {
 
   addMenu() {
     this.items = [
-      /*
       {
         label: 'Usuario',
         icon: 'pi pi-fw pi-users',
         items: [
           {
-            label: 'Registrar usuario',
+            label: 'Visualizar usuarios',
             icon: 'pi pi-fw pi-user',
-            routerLink: 'user/register',
+            routerLink: 'user/users-list',
+          },
+          {
+            label: 'registrar usuario',
+            icon: 'pi pi-fw pi-user',
+            routerLink: 'user/user-register',
           },
         ],
       },
@@ -63,23 +67,6 @@ export class NavigationComponent implements OnInit {
           },
         ],
       },
-      {
-        label: 'Género',
-        icon: 'pi pi-fw pi-cog',
-        routerLink: 'gender/genders-list',
-      },
-      {
-        label: 'Rol',
-        icon: 'pi pi-fw pi-cog',
-        items: [
-          {
-            label: 'Crear rol',
-            icon: 'pi pi-fw pi-shield',
-            routerLink: 'role/roles-list',
-          },
-        ],
-      },
-    */
     ];
   }
 
@@ -88,7 +75,6 @@ export class NavigationComponent implements OnInit {
     this.habilitar = false;
     this.navigationService._navigationRefresh = false;
     localStorage.removeItem('panelState');
-    localStorage.removeItem(`permissionsLogin`);
     this.items = [];
     this.router.navigate(['user/login']);
   }
