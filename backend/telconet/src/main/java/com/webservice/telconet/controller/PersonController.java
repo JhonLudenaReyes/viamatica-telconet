@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,17 +27,20 @@ public class PersonController {
 	@Autowired
 	private PersonService personService;
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/people-list")
 	public ResponseEntity<List<Person>> getPeopleActives() {
 		return personService.getPeopleActives().map(people -> new ResponseEntity<>(people, HttpStatus.OK))
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/save-person")
 	public ResponseEntity<Person> save(@RequestBody Person person){
 		return new ResponseEntity<>(personService.save(person), HttpStatus.CREATED);
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/update-person")
 	public ResponseEntity<Person> update(@RequestBody Person person){
 		Optional<Person> searchPerson = personService.getPersonByPersonId(person.getPersonId());
@@ -48,6 +52,7 @@ public class PersonController {
 		}
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/delete-person")
 	public ResponseEntity<Person> delete(@PathParam("personId") int personId){
 		Optional<Person> searchPerson = personService.getPersonByPersonId(personId);
