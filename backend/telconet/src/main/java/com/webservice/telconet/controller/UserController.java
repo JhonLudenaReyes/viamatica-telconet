@@ -64,7 +64,7 @@ public class UserController {
 			String lastName2 = spaceIndex != -1 ? person.getLastName().substring(spaceIndex, spaceIndex + 1)
 					: person.getLastName();
 
-			user.setEmail(name + lastName1 + lastName2);
+			user.setEmail(name + lastName1 + lastName2+"@gmail.com");
 		}
 
 		return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);

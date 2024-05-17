@@ -30,7 +30,7 @@ public class UserService implements UserRepository{
 	@Override
 	public Optional<User> sessionLogin(String user, String password) {
 		// TODO Auto-generated method stub
-		return userDaoRepository.findByUserNameAndPasswordAndStateOrEmailAndPasswordAndState(user, password, "A");
+		return userDaoRepository.searchUserByNameorEmail(user, password);
 	}
 
 	@Override
