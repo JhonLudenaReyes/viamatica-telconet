@@ -19,5 +19,9 @@ public interface UserRepository {
 	Optional<User> searchUser(String user);
 	
 	Optional<User> sessionLogin(String user, String password);
+	
+	Optional<User> sessionLoginSearch(String user, String password);
+	
+	
 
 }

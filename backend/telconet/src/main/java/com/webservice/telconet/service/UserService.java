@@ -46,6 +46,12 @@ public class UserService implements UserRepository{
 		return userDaoRepository.findAllByState("A");
 	}
 
+	@Override
+	public Optional<User> sessionLoginSearch(String user, String password) {
+		// TODO Auto-generated method stub
+		return userDaoRepository.sessionLoginSearch(user, password);
+	}
+
 	
 	
 

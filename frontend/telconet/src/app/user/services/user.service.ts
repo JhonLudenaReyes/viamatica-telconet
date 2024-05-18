@@ -31,7 +31,7 @@ export class UserService {
 
   getUserLogIn(user: string, password: string): Observable<UserPersonRole> {
     return this.http.get<UserPersonRole>(
-      `http://localhost:8080/telconet/web-service/api/users/session-login?userName=${user}&password=${password}`
+      `http://localhost:8080/telconet/web-service/api/users/session-login-auth?userName=${user}&password=${password}`
     );
   }
 

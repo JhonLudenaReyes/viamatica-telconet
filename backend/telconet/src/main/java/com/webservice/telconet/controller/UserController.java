@@ -51,6 +51,21 @@ public class UserController {
 		}
 
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/session-login-auth")
+	public ResponseEntity<Object> sessionLoginAuth(@RequestParam("userName") String userName,
+			@RequestParam("password") String password) {
+
+		Optional<User> userLogin = userService.sessionLoginSearch(userName, password);
+
+		if (userLogin.isPresent()) {
+			return new ResponseEntity<>(userLogin.get(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("save-user")
