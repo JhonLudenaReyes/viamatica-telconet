@@ -9,6 +9,7 @@ import { UserModule } from './user/user.module';
 import { RefreshDirective } from './directives/refresh.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { PersonModule } from './person/person.module';
 
 @NgModule({
   declarations: [AppComponent, RefreshDirective],
@@ -19,6 +20,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     DashboardModule,
     LandingModule,
     NavigationModule,
+    PersonModule,
     UserModule,
   ],
   providers: [],

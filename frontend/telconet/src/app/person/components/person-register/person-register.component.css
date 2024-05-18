@@ -1,0 +1,15 @@
+.PersonRegisterCard{
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.PersonRegisterImage{
+  display: flex;
+  justify-content: center;
+}
+
+.PersonTitle{
+  display: flex;
+  justify-content: center;
+}
