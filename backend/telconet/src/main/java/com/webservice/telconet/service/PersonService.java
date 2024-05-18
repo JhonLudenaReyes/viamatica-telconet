@@ -34,4 +34,10 @@ public class PersonService implements PersonRepository{
 		return personDaoRepository.save(person);
 	}
 
+	@Override
+	public Optional<List<Person>> searchPeopleActive(String search) {
+		// TODO Auto-generated method stub
+		return personDaoRepository.searchPeopleActive(search);
+	}
+
 }

@@ -20,7 +20,7 @@ const routes: Routes = [
         component: UsersListComponent,
       },
       {
-        path: 'search-user',
+        path: 'search-person',
         component: UserSearchComponent,
       },
       {

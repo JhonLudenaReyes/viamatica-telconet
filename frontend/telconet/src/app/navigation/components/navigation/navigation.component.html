@@ -8,22 +8,33 @@
     />
     <b [routerLink]="['']">Viamatica telconet</b>
   </ng-template>
-  <span *ngIf="habilitar">
-    <b>Bienvenido usuario: </b>{{ userLogin.userName }} <b>Perfil: </b>
-    <h5 *ngFor="let role of userLogin.roles">{{ role.role | uppercase }}</h5>
-  </span>
-  <button
-    pButton
-    label="Cerrar sesión"
-    icon="pi pi-power-off"
-    (click)="cerrarSesion()"
-    *ngIf="habilitar"
-  ></button>
-  <button
-    pButton
-    label="Iniciar sesión"
-    icon="pi pi-power-off"
-    (click)="iniciarSesion()"
-    *ngIf="!habilitar"
-  ></button>
+
+  <ng-template pTemplate="end">
+    <div class="row">
+      <div class="col col-8">
+        <span *ngIf="habilitar">
+          <b>Bienvenido usuario: </b>{{ userLogin.userName }} <b>Perfil: </b>
+          <small *ngFor="let role of userLogin.roles">
+            {{ role.role | uppercase }}
+          </small>
+        </span>
+      </div>
+      <div class="col">
+        <button
+          pButton
+          label="Cerrar sesión"
+          icon="pi pi-power-off"
+          (click)="cerrarSesion()"
+          *ngIf="habilitar"
+        ></button>
+        <button
+          pButton
+          label="Iniciar sesión"
+          icon="pi pi-power-off"
+          (click)="iniciarSesion()"
+          *ngIf="!habilitar"
+        ></button>
+      </div>
+    </div>
+  </ng-template>
 </p-menubar>

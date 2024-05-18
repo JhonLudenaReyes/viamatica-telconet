@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { ImageModule } from 'primeng/image';
+import { CalendarModule } from 'primeng/calendar';
 
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
@@ -29,6 +30,7 @@ import { PersonRoutingModule } from './person-routing.module';
     FormsModule,
     CardModule,
     ImageModule,
+    CalendarModule,
     ToastModule,
     ConfirmDialogModule,
     MessagesModule,

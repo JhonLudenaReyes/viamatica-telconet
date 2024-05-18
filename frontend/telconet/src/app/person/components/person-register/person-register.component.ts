@@ -18,7 +18,7 @@ export class PersonRegisterComponent implements OnInit {
   name: string = '';
   lastName: string = '';
   identificationCard: string = '';
-  birthDate: string = '';
+  birthDate: Date = new Date();
 
   constructor(
     private personService: PersonService,
@@ -75,7 +75,7 @@ export class PersonRegisterComponent implements OnInit {
       name: '',
       lastName: '',
       identificationCard: '',
-      birthDate: '',
+      birthDate: new Date(),
     };
   }
 
@@ -99,6 +99,6 @@ export class PersonRegisterComponent implements OnInit {
     this.name = '';
     this.lastName = '';
     this.identificationCard = '';
-    this.birthDate = '';
+    this.birthDate = new Date();
   }
 }

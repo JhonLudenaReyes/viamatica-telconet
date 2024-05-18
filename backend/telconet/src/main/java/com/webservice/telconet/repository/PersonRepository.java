@@ -12,6 +12,8 @@ public interface PersonRepository {
 	
 	Optional<List<Person>> getPeopleActives();
 	
+	Optional<List<Person>> searchPeopleActive(String search);
+	
 	Optional<Person> getPersonByPersonId(Integer personId);
 	
 	Person save(Person person);

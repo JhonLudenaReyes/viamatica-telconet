@@ -3,6 +3,6 @@ export interface Person {
   name: string;
   lastName: string;
   identificationCard: string;
-  birthDate: string;
+  birthDate: Date;
   state?: string;
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webservice.telconet.model.entity.Person;
@@ -35,33 +36,41 @@ public class PersonController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/search-people-active")
+	public ResponseEntity<List<Person>> searchPeopleActive(@RequestParam("search") String search) {
+		return personService.searchPeopleActive(search).map(people -> new ResponseEntity<>(people, HttpStatus.OK))
+				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+	}
+
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/save-person")
-	public ResponseEntity<Person> save(@RequestBody Person person){
+	public ResponseEntity<Person> save(@RequestBody Person person) {
 		return new ResponseEntity<>(personService.save(person), HttpStatus.CREATED);
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/update-person")
-	public ResponseEntity<Person> update(@RequestBody Person person){
+	public ResponseEntity<Person> update(@RequestBody Person person) {
 		Optional<Person> searchPerson = personService.getPersonByPersonId(person.getPersonId());
-		
-		if(searchPerson.isPresent()) {
+
+		if (searchPerson.isPresent()) {
 			return new ResponseEntity<>(personService.save(person), HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	
+
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("/delete-person")
-	public ResponseEntity<Person> delete(@PathParam("personId") int personId){
+	public ResponseEntity<Person> delete(@PathParam("personId") int personId) {
 		Optional<Person> searchPerson = personService.getPersonByPersonId(personId);
-		
-		if(searchPerson.isPresent()) {
+
+		if (searchPerson.isPresent()) {
 			Person personUpdate = searchPerson.get();
 			personUpdate.setState("I");
 			return new ResponseEntity<>(personService.save(personUpdate), HttpStatus.OK);
-		}else {
+		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}

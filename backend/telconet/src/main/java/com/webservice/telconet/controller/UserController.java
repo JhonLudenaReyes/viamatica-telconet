@@ -1,5 +1,6 @@
 package com.webservice.telconet.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,12 @@ public class UserController {
 
 	@Autowired
 	private PersonService personService;
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/users-list")
+	public ResponseEntity<List<User>> getUsersActive(){
+		return userService.getUsersActive().map(users -> new ResponseEntity<>(users, HttpStatus.OK)).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/session-login")
@@ -61,10 +68,13 @@ public class UserController {
 			int spaceIndex = person.getLastName().indexOf(" ");
 			String lastName1 = spaceIndex != -1 ? person.getLastName().substring(0, spaceIndex) : person.getLastName();
 
-			String lastName2 = spaceIndex != -1 ? person.getLastName().substring(spaceIndex, spaceIndex + 1)
+			String lastName2 = spaceIndex != -1 ? person.getLastName().substring(spaceIndex+1, spaceIndex + 2)
 					: person.getLastName();
+			
+			String mail = "@gmail.com";
 
-			user.setEmail(name + lastName1 + lastName2 + "@gmail.com");
+			user.setEmail(name.toLowerCase() + lastName1.toLowerCase() + lastName2.toLowerCase() + mail);
+			System.out.println(user.getEmail());
 		}
 
 		return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);

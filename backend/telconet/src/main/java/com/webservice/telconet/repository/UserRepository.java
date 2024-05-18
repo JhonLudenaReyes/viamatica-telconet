@@ -1,5 +1,6 @@
 package com.webservice.telconet.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,8 @@ import com.webservice.telconet.model.entity.User;
 public interface UserRepository {
 	
 	User save(User user);
+	
+	Optional<List<User>> getUsersActive();
 	
 	Optional<User> searchUserById(Integer userId);
 	

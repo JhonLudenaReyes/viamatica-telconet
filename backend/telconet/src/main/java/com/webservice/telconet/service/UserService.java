@@ -1,5 +1,6 @@
 package com.webservice.telconet.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class UserService implements UserRepository{
 	public Optional<User> searchUser(String user) {
 		// TODO Auto-generated method stub
 		return userDaoRepository.findByUserNameAndState(user, "A");
+	}
+
+	@Override
+	public Optional<List<User>> getUsersActive() {
+		// TODO Auto-generated method stub
+		return userDaoRepository.findAllByState("A");
 	}
 
 	
