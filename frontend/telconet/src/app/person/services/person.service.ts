@@ -23,19 +23,22 @@ export class PersonService {
   }
 
   savePerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(`https://localhost:7071/api/People`, person);
+    return this.http.post<Person>(
+      `http://localhost:8080/telconet/web-service/api/people/save-person`,
+      person
+    );
   }
 
   updatePerson(person: Person): Observable<any> {
     return this.http.put<any>(
-      `https://localhost:7071/api/People/${person.personId}`,
+      `http://localhost:8080/telconet/web-service/api/people/update-person`,
       person
     );
   }
 
   deletePerson(personId: number): Observable<any> {
     return this.http.delete<any>(
-      `https://localhost:7071/delete-person/${personId}`
+      `http://localhost:8080/telconet/web-service/api/people/delete-person?personId=${personId}`
     );
   }
 }

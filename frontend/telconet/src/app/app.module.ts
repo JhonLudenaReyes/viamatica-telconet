@@ -11,12 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PersonModule } from './person/person.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from 'primeng/messages';
+
 @NgModule({
   declarations: [AppComponent, RefreshDirective],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MessagesModule,
     DashboardModule,
     LandingModule,
     NavigationModule,

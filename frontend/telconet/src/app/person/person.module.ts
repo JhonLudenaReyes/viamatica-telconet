@@ -14,6 +14,8 @@ import { ImageModule } from 'primeng/image';
 //Modulos para mensajes de confirmacion
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 import { PersonRoutingModule } from './person-routing.module';
 
 @NgModule({
@@ -28,6 +30,7 @@ import { PersonRoutingModule } from './person-routing.module';
     CardModule,
     ImageModule,
     ToastModule,
+    ConfirmDialogModule,
     MessagesModule,
     PersonRoutingModule,
   ],
